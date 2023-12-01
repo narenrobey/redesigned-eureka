@@ -8,5 +8,5 @@ tasks:
   localrun:
     deps: [build]
     cmds:
-      - docker run -p 8080:8080 docker.io/library/tfrunner
+      - docker run -p 8080:8080 -p 8081:8081 docker.io/library/tfrunner
   
