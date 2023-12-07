@@ -1,0 +1,21 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: robeyna-minimal-cluster
+  namespace: app
+spec:
+  teamId: "robeyna"
+  volume:
+    size: 1Gi
+  numberOfInstances: 1
+  users:
+    robeyna:  # database owner
+    - superuser
+    - createdb
+    foo_user: []  # role for application foo
+  databases:
+    foo: robeyna  # dbname: owner
+  preparedDatabases:
+    bar: {}
+  postgresql:
+    version: "15"
