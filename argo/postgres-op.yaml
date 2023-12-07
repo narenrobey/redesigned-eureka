@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres-operator-install
+spec:
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: postgres-operator
+  project: default
+  source:
+    chart: "postgres-operator"
+    targetRevision: "1.10.1"
+    repoURL: "https://opensource.zalando.com/postgres-operator/charts/postgres-operator"
+    helm:
+      releaseName: postgres-operator
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
